@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 app.post('/message', async (req, res) => {
     const response = new MessagingResponse();
 
-    console.log("Body: " + req.body)
+    console.log("Body: " + JSON.stringify(req.body));
     const message = req.body.Body;
     const from = req.body.From;
 
@@ -55,7 +55,7 @@ app.post('/message', async (req, res) => {
 
     console.log("GPT Answer: " + gptAnswer)
 
-    client.messages
+    await client.messages
         .create({
             from: 'whatsapp:' + process.env.TWILLIO_FROM_NUMBER,
             body: "Your answer is:\n" + gptAnswer +"\n" + "Feel free to ask anything.",

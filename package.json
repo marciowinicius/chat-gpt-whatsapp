@@ -1,0 +1,31 @@
+{
+  "name": "chat-gpt-whatsapp",
+  "version": "1.0.0",
+  "description": "Project to interact with chat gpt OpenAI though whatsapp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "start:dev": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marciowinicius/chat-gpt-whatsapp.git"
+  },
+  "keywords": [
+    "chat-gpt",
+    "whatsapp",
+    "openAI"
+  ],
+  "author": "Márcio Winicius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marciowinicius/chat-gpt-whatsapp/issues"
+  },
+  "homepage": "https://github.com/marciowinicius/chat-gpt-whatsapp#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "openai": "^3.1.0",
+    "twilio": "^3.84.0"
+  }
+}

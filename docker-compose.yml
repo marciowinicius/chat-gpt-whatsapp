@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./
+      target: ${TARGET}
+    volumes:
+      - .:/src
+    command: npm run start:dev
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:3000"
+    environment:
+      DEBUG: nodejs-docker-express:*

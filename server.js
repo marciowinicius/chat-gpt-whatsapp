@@ -33,7 +33,7 @@ app.post('/message', async (req, res) => {
         client.messages
             .create({
                 from: 'whatsapp:' + process.env.TWILLIO_FROM_NUMBER,
-                body: "Hello. Feel free to ask anything.\n" + "Please send a question with more than 12 characters.",
+                body: "Hello I'm a BOT integrated with OpenAI. Feel free to ask anything.\n" + "Please send a question with more than 12 characters.",
                 to: from
             })
             .then(message => console.log(message.sid));

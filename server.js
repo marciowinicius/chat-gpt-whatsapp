@@ -30,7 +30,6 @@ app.post('/message', async (req, res) => {
     response.message(`Your text to me was ${message}.
                     Webhooks are neat :)`);
     res.set('Content-Type', 'text/xml');
-    res.send(response.toString());
 
     if (message.length <= 12) {
         client.messages
@@ -40,6 +39,7 @@ app.post('/message', async (req, res) => {
                 to: 'whatsapp:' + from
             })
             .then(message => console.log(message.sid));
+        res.send(response.toString());
         return;
     }
 
@@ -61,6 +61,7 @@ app.post('/message', async (req, res) => {
             to: 'whatsapp:' + from
         })
         .then(message => console.log(message.sid));
+    res.send(response.toString());
 });
 
 app.listen(port, function () {

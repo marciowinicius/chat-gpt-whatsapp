@@ -23,14 +23,11 @@ app.get('/', function (req, res) {
 
 app.post('/message', async (req, res) => {
     const response = new MessagingResponse();
+    res.set('Content-Type', 'text/xml');
 
     console.log("Body: " + JSON.stringify(req.body));
     const message = req.body.Body;
     const from = req.body.From;
-
-    response.message(`Your text to me was ${message}.
-                    Webhooks are neat :)`);
-    res.set('Content-Type', 'text/xml');
 
     if (message.length <= 12) {
         client.messages
@@ -59,7 +56,7 @@ app.post('/message', async (req, res) => {
         .create({
             from: 'whatsapp:' + process.env.TWILLIO_FROM_NUMBER,
             body: "Your answer is:\n" + gptAnswer +"\n" + "Feel free to ask anything.",
-            to: 'whatsapp:' + from
+            to: from
         })
         .then(message => console.log(message.sid));
     res.send(response.toString());

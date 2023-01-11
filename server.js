@@ -24,6 +24,7 @@ app.get('/', function (req, res) {
 app.post('/message', async (req, res) => {
     const response = new MessagingResponse();
 
+    console.log("Body: " + req.body)
     const message = req.body.Body;
     const from = req.body.From;
 
@@ -36,7 +37,7 @@ app.post('/message', async (req, res) => {
             .create({
                 from: 'whatsapp:' + process.env.TWILLIO_FROM_NUMBER,
                 body: "Hello. Feel free to ask anything.\n" + "Please send a question with more than 12 characters.",
-                to: 'whatsapp:' + from
+                to: from
             })
             .then(message => console.log(message.sid));
         res.send(response.toString());
